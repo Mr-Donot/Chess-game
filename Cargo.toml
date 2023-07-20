@@ -5,3 +5,4 @@ authors = ["FLO <florian.daunay@gmail.com>"]
 
 [dependencies]
 minifb = "0.18.0"
+image = "0.24.1"

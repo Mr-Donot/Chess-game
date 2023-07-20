@@ -1,15 +1,15 @@
 use piece::Piece;
 
-pub struct Pawn {
+pub struct King {
     pub coords: [usize;2],
     pub white_side : bool,
 }
 
-impl Piece for Pawn {
+impl Piece for King {
     type Coordinate = [usize;2];
 
     fn get_name(&self) -> &str {
-        "pawn"
+        "king"
     }
     fn get_coords(&self) -> &Self::Coordinate {
         &self.coords

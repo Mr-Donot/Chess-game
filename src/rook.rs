@@ -17,8 +17,8 @@ impl Piece for Rook {
     fn set_coords(&mut self, coords: Self::Coordinate) {
         self.coords = coords;
     }
-    fn get_white_side(&self) -> &bool{
-        &self.white_side
+    fn get_white_side(&self) -> bool{
+        self.white_side
     }
     fn set_white_side(&mut self, b :bool){
         self.white_side = b;

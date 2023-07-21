@@ -107,8 +107,6 @@ pub fn add_piece_on_chessboard(buffer: &mut Vec<u32>,pawn: &dyn Piece<Coordinate
 
 }
 
-
-
 pub fn update_board(buffer : &mut Vec<u32>, game : &mut Game, img_folder : &str){
     draw_chessboard(buffer);
     update_board_side(buffer, game, img_folder, "black");

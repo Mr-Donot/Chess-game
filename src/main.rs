@@ -16,6 +16,7 @@ use constants::*;
 mod drawing;
 use game::*;
 use drawing::*;
+use piece::*;
 
 fn main() {
     let mut buffer: Vec<u32> = vec![0; WIDTH * HEIGHT];
@@ -57,17 +58,21 @@ fn main() {
                 }
             }
             else {
-                game.remove_piece(pos_x, pos_y);
+                let destination = [pos_x, pos_y];
+                if coords_piece != destination {
+                    game.remove_piece(destination[0], destination[1]);
+                }
+
                 let chosen_piece = game.get_piece_by_position(coords_piece[0], coords_piece[1]);
                 match chosen_piece {
-                    Some(_) => {chosen_piece.unwrap().set_coords([pos_x, pos_y])}
+                    Some(_) => {
+                        let unwrap_piece = chosen_piece.unwrap();
+                        if is_legal_move(unwrap_piece, &destination){
+                            unwrap_piece.set_coords(destination);
+                        }
+                    }
                     None => {}
-                }
-            
-
-                
-
-                    
+                }   
                 
                 update_board(&mut buffer, &mut game, img_folder);
                 holding_piece = false;
@@ -79,3 +84,7 @@ fn main() {
 }
 
 
+fn is_legal_move(piece : &mut Box<dyn Piece<Coordinate = [usize;2]>>, destination : &[usize;2]) -> bool{
+    return (if piece.get_legal_moves().contains(destination){true} else {false});
+
+}

@@ -1,5 +1,7 @@
 use piece::Piece;
+use game::*;
 
+#[derive(Clone)]
 pub struct Queen {
     pub coords: [usize;2],
     pub white_side : bool,
@@ -22,5 +24,12 @@ impl Piece for Queen {
     }
     fn set_white_side(&mut self, b :bool){
         self.white_side = b;
+    }
+    fn get_legal_moves(&self) -> Vec<[usize;2]>{
+        let mut result : Vec<[usize;2]> = Vec::new();
+
+
+
+        return result;
     }
 }
